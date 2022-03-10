@@ -1,0 +1,50 @@
+systemVersion: config/v1
+######################
+
+macos:
+  local:
+    virtualization:
+      qemu: 6.2.0-gpu-sdl
+      config:
+        - machine: virt-6.2,highmem=off
+        - accel: hvf
+      #  - accel: tcg,tb-size=1024
+        - cpu: host
+        - smp: 8
+        - m: 4G
+        #- bios: $edk2
+        - drive: if=pflash,format=raw,unit=0,file=$EFICodeAARCH64,readonly=on
+      #  - drive: if=pflash,format=raw,unit=1,file=$EFIVARS
+        - boot: order=c
+        - serial: stdio
+        - device: qemu-xhci
+        - device: usb-kbd
+        - device: usb-tablet
+        - device: virtio-ramfb
+        - drive: file=$system,if=none,id=boot,cache=writethrough
+        - device: nvme,drive=boot,serial=boot
+        - device: intel-hda
+        - device: hda-duplex
+        - display: none
+        # - monitor: stdio
+        - device: e1000,mac=6E:B7:A2:0E:3D:11,netdev=net0 
+        - netdev: vmnet-macos,mode=shared,id=net0
+        - chardev: socket,path=/tmp/qga.sock,server,nowait,id=qga0
+        - device: virtio-serial
+        - device: virtserialport,chardev=qga0,name=org.qemu.guest_agent.0
+        - qmp: tcp:localhost:4441,server,nowait
+        - monitor: tcp:localhost:5551,server,nowait
+      drives:
+        - name: system
+          type: system
+          layers:
+            - hash: 6cfc729346bbb60ff68dfe3c589b5fbd6ef6ac84ab82abb0295b20f8d95ea672
+              url: https://github.com/kymano-app/repo/releases/download/0.0.1/guestfs.tgz
+        - name: EFIVARS
+          layers:
+            - hash: b3b855c5a80310168051164986855692d1bdb06e67619856177965cd87c6774f
+              url: https://github.com/kymano-app/repo/releases/download/0.0.1/EFI_VARS.tgz
+        - name: EFICodeAARCH64
+          layers:
+            - hash: ca76c2ae023903d2378756f711887061b989673dc8ccb3f9ec821d67c2e796ad
+              url: https://github.com/kymano-app/repo/releases/download/0.0.1/EFI_Code-AARCH64.tgz
