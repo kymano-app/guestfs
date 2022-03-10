@@ -4,7 +4,7 @@ version: 0.1
 configs:
   0:
     version: 0.1
-    from: /guesfs-arm64:0.1
+    from: /guestfs-arm64:0.1
   1:
     version: 0.1
-    from: /guesfs-x86_64:0.1
+    from: /guestfs-x86_64:0.1
