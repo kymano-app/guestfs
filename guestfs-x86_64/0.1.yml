@@ -1,0 +1,46 @@
+systemVersion: config/v1
+######################
+
+windows:
+  local:
+    virtualization:
+      qemu: 6.2.1
+      config:
+        - machine: q35
+        - cpu: qemu64,vmx=on
+        - smp: 4
+        - accel: whpx,kernel-irqchip=off 
+        - m: 4G
+        - boot: order=c
+      # - serial: stdio
+        - device: qemu-xhci
+        - device: usb-kbd
+        - device: usb-tablet
+       # - device: ramfb
+        - drive: file=$system,cache=writethrough
+        - device: intel-hda
+        - device: hda-duplex
+        # - monitor: stdio
+        # - display: none
+        - nic: user,model=virtio-net-pci
+        #- drive: if=pflash,format=raw,file=$OVMFCODE
+        #- drive: if=pflash,format=raw,file=$OVMFVARS
+        - chardev: socket,path=/tmp/qga.sock,server,nowait,id=qga0
+        - device: virtio-serial
+        - device: virtserialport,chardev=qga0,name=org.qemu.guest_agent.0
+        - qmp: tcp:localhost:4441,server,nowait
+        - monitor: tcp:localhost:5551,server,nowait
+      drives:
+        - name: system
+          type: system
+          layers:
+            - hash: 33ab095c1e6ceb84ba1e34003a09036c381e4a020aabe3b542371b4f8d61cfc8
+              url: https://github.com/kymano-app/fedora/releases/download/fedora35-workstation/fedora35-workstation-x86_64-1.tgz
+        - name: OVMFVARS
+          layers:
+            - hash: bebeab94d6ae3cd119450da144b7089181e89675bbaf136745bb6ae3b7de52bd
+              url: https://github.com/kymano-app/repo/releases/download/0.0.1/x86_64_OVMF_VARS.tgz
+        - name: OVMFCODE
+          layers:
+            - hash: 2a1e6535699d8984fdf6379cfaeecd9fc47d894ae4c753d5f2a3ea9671621e35
+              url: https://github.com/kymano-app/repo/releases/download/0.0.1/x86_64_OVMF_CODE.tgz
