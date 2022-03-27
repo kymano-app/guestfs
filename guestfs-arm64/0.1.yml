@@ -40,7 +40,7 @@ macos:
           layers:
             - hash: 6cfc729346bbb60ff68dfe3c589b5fbd6ef6ac84ab82abb0295b20f8d95ea672
               url: https://github.com/kymano-app/repo/releases/download/0.0.1/guestfs.tgz
-            - hash: 7e3dcf0d7c86d12ef63e42821b373587f7eb9858ea79d471690e5a50f9b55746
+            - hash: 9ccfd8ec271a9f39ae2e87387ad918d307bfae9f6686b65855b14d5b2c05c363
               url: https://github.com/kymano-app/repo/releases/download/0.0.1/guestfs-daemon.tgz
         - name: EFIVARS
           layers:
