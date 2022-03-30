@@ -29,11 +29,10 @@ macos:
         # - monitor: stdio
         - device: e1000,mac=6E:B7:A2:0E:3D:11,netdev=net0 
         - netdev: vmnet-macos,mode=shared,id=net0
-        - chardev: socket,path=/tmp/qga.sock,server,nowait,id=qga0
         - device: virtio-serial
-        - device: virtserialport,chardev=qga0,name=org.qemu.guest_agent.0
-        - qmp: tcp:localhost:4441,server,nowait
         - monitor: tcp:localhost:5551,server,nowait
+        - chardev: socket,path=guestexec.sock,server,nowait,id=guestexec
+        - device: virtserialport,chardev=guestexec,id=test0,nr=2,name=guestexec
       drives:
         - name: system
           type: system
@@ -48,6 +47,8 @@ macos:
               url: https://github.com/kymano-app/repo/releases/download/0.0.1/guestfs-upd-daemon.tgz
             - hash: 053351125489c55f51a73b2553ee64afb6108e0c7e51c51ca7ccd60c67bdd293
               url: https://github.com/kymano-app/repo/releases/download/0.0.1/guestfs-nginx-access-header.tgz
+            - hash: 38147a2cf6ae13f1c0d755c61b394db4b7512ca479fef6af0b12a2f47f2f32f9
+              url: https://github.com/kymano-app/repo/releases/download/0.0.1/guestfs-guestexec.tgz
         - name: EFIVARS
           layers:
             - hash: b3b855c5a80310168051164986855692d1bdb06e67619856177965cd87c6774f
