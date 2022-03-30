@@ -31,7 +31,7 @@ macos:
         - netdev: vmnet-macos,mode=shared,id=net0
         - device: virtio-serial
         - monitor: tcp:localhost:5551,server,nowait
-        - chardev: socket,path=guestexec.sock,server,nowait,id=guestexec
+        - chardev: socket,path=/tmp/guestexec.sock,server,nowait,id=guestexec
         - device: virtserialport,chardev=guestexec,id=test0,nr=2,name=guestexec
       drives:
         - name: system
