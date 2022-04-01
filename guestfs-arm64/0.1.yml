@@ -49,6 +49,9 @@ macos:
               url: https://github.com/kymano-app/repo/releases/download/0.0.1/guestfs-nginx-access-header.tgz
             - hash: 38147a2cf6ae13f1c0d755c61b394db4b7512ca479fef6af0b12a2f47f2f32f9
               url: https://github.com/kymano-app/repo/releases/download/0.0.1/guestfs-guestexec.tgz
+            - hash: 29979b16573e8a41b60eb689e5b32f1ff71ca3cd3097f85ed5973315afcdf4f3
+              url: https://github.com/kymano-app/repo/releases/download/0.0.1/guestfs-autostart.tgz
+
         - name: EFIVARS
           layers:
             - hash: b3b855c5a80310168051164986855692d1bdb06e67619856177965cd87c6774f
