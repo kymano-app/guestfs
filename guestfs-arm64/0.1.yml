@@ -30,8 +30,8 @@ macos:
         - device: e1000,mac=6E:B7:A2:0E:3D:11,netdev=net0 
         - netdev: vmnet-macos,mode=shared,id=net0
         - device: virtio-serial
-        - monitor: tcp:localhost:5551,server,nowait
-        - chardev: socket,path=/tmp/guestexec.sock,server,nowait,id=guestexec
+        - monitor: unix:socket[name=monitor],server,nowait
+        - chardev: socket,path=socket[name=guestexec],server,nowait,id=guestexec
         - device: virtserialport,chardev=guestexec,id=test0,nr=2,name=guestexec
       drives:
         - name: system
