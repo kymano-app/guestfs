@@ -51,12 +51,13 @@ macos:
               url: https://github.com/kymano-app/repo/releases/download/0.0.1/guestfs-guestexec.tgz
             - hash: 29979b16573e8a41b60eb689e5b32f1ff71ca3cd3097f85ed5973315afcdf4f3
               url: https://github.com/kymano-app/repo/releases/download/0.0.1/guestfs-autostart.tgz
-
         - name: EFIVARS
+          type: bios
           layers:
             - hash: b3b855c5a80310168051164986855692d1bdb06e67619856177965cd87c6774f
               url: https://github.com/kymano-app/repo/releases/download/0.0.1/EFI_VARS.tgz
         - name: EFICodeAARCH64
+          type: bios
           layers:
             - hash: ca76c2ae023903d2378756f711887061b989673dc8ccb3f9ec821d67c2e796ad
               url: https://github.com/kymano-app/repo/releases/download/0.0.1/EFI_Code-AARCH64.tgz
