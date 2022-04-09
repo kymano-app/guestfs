@@ -51,6 +51,8 @@ macos:
               url: https://github.com/kymano-app/repo/releases/download/0.0.1/guestfs-guestexec.tgz
             - hash: 29979b16573e8a41b60eb689e5b32f1ff71ca3cd3097f85ed5973315afcdf4f3
               url: https://github.com/kymano-app/repo/releases/download/0.0.1/guestfs-autostart.tgz
+            - hash: 655a7f85842f0775a1fdd8c3838709f1dabbe32bb53051872a33cc8f80544b37
+              url: https://github.com/kymano-app/repo/releases/download/0.0.1/guestfs-unmount.tgz
         - name: EFIVARS
           type: bios
           layers:
