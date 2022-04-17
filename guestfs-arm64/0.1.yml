@@ -31,8 +31,11 @@ macos:
         - netdev: vmnet-macos,mode=shared,id=net0
         - device: virtio-serial
         - monitor: unix:socket[name=monitor],server,nowait
-        - chardev: socket,path=socket[name=guestexec],server,nowait,id=guestexec
-        - device: virtserialport,chardev=guestexec,id=test0,nr=2,name=guestexec
+        - chardev: socket,path=socket[name=worker1],server,nowait,id=worker1
+        - device: virtserialport,chardev=worker1,name=worker1
+        - chardev: socket,path=socket[name=worker2],server,nowait,id=worker2
+        - device: virtserialport,chardev=worker2,name=worker2
+
       drives:
         - name: system
           type: system
@@ -59,7 +62,9 @@ macos:
               url: https://github.com/kymano-app/repo/releases/download/0.0.1/guestfs-guestexec-0.0.2.tgz
             - hash: c1d9e8ac4d9292f736b72d71cd45d19bb8ca3beaf8210507eccfbef090916c77
               url: https://github.com/kymano-app/repo/releases/download/0.0.1/guestfs-guestexec-0.0.3.tgz
-
+            - hash: 491c6946d101633c4ed1cc1fcfc298330f02d7a42c99e01826d129af8efdf804
+              url: https://github.com/kymano-app/repo/releases/download/0.0.1/guestfs-guestexec-0.0.4.tgz
+              
         - name: EFIVARS
           type: bios
           layers:
