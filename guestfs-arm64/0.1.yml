@@ -70,6 +70,8 @@ macos:
               url: https://github.com/kymano-app/repo/releases/download/0.0.1/guestfs-ack.tgz
             - hash: f90150cc07b095825a6833dbe6e194c85bd0687f7ae8c712475d937554e55e95
               url: https://github.com/kymano-app/repo/releases/download/0.0.1/guestfs-guestexec-0.0.6.tgz
+            - hash: 78349c7ab1e0f6d734b497493e415934a570b30503636f46c5fe721ef899b985
+              url: https://github.com/kymano-app/repo/releases/download/0.0.1/guestfs-guestexec-0.0.7.tgz
 
         - name: EFIVARS
           type: bios
